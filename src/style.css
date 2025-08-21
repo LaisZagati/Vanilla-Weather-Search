@@ -13,4 +13,10 @@ body {
  
 
 }
-    
+
+.search-form-input {
+    background-color: #f9f7fe;
+    border:none;
+    border-bottom: 6px;
+
+}
