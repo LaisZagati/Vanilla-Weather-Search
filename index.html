@@ -3,43 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/style.css" />
     <title>Meteo App</title>
   </head>
   <body>
     <div class="weather-app">
-    <header>
-      <form>
-        <input type="search" placeholder="Enter a city.." required />
-        <input type="submit" value="Search" />
-      </form>
-    </header>
-    <main>
-      <div>
-        <h1>Paris</h1>
-        <p>
-          Thursday 11:32, clear sky
-          <br />
-          Humidity: 43%, Wind: 6.17km/h
-        </p>
-      </div>
-      <div>🌤 12°C</div>
-    </main>
+      <header>
+        <form class="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            class="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-button" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="weather-app-city">Paris</h1>
+            <p class="weather-app-details">
+              Thursday 11:32, clear sky
+              <br />
+              Humidity: <strong>43%</strong>, Wind: <strong>6.17km/h</strong>
+            </p>
+          </div>
+          <div class="weather-app-icon-container">
+          <div class="weather-app-icon">🌤</div>
+          <div class="weather-app-temperature">12</div>
+          <div class="weather-app-unit">°C</div>
+          </div>
+        </div>
+      </main>
 
-    <footer>
-      Coded by
-      <a href="https://github.com/LaisZagati/" target="_blank"> Lais Zagati</a>,
-      code hosted on
-      <a
-        href="https://github.com/LaisZagati/Vanilla-Weather-Search"
-        target="_blank"
-        >GitHub</a
-      >
-      and website hosted
-      <a href="https://weather-search-shecode.netlify.app/" target="_blank"
-        >on Netlify</a
-      >
-    </footer>
+      <footer>
+        Coded by
+        <a href="https://github.com/LaisZagati/" target="_blank"> Lais Zagati</a
+        >, code hosted on
+        <a
+          href="https://github.com/LaisZagati/Vanilla-Weather-Search"
+          target="_blank"
+          >GitHub</a
+        >
+        and website hosted
+        <a href="https://weather-search-shecode.netlify.app/" target="_blank"
+          >on Netlify</a
+        >
+      </footer>
     </div>
   </body>
 </html>
