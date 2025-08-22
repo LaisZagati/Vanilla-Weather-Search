@@ -1,3 +1,6 @@
+
+
+
 function handleSearchSubmit(event) {
   event.preventDefault(); // Prevent the default form submission behavior
   let searchInput = document.querySelector("#search-form-input"); // Get the user input
