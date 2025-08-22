@@ -23,3 +23,6 @@ function handleSearchSubmit(event) {
 
 let searchFormElement = document.querySelector("#search-form"); // Target form element from html using ID
 searchFormElement.addEventListener("submit", handleSearchSubmit); // Add event listener to the form when submit is clicked
+
+
+searchCity("Paris"); // Initial call to load weather data for Paris
