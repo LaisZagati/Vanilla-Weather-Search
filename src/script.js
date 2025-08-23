@@ -7,6 +7,9 @@ function refreshWeather(response) {
   let windElement = document.querySelector("#wind-speed"); // Target the wind element from html using ID
   let timeElement = document.querySelector("#time"); // Target the time element from html using ID
   let date = new Date(response.data.time * 1000); // Convert the time from seconds to milliseconds
+  let iconElement = document.querySelector("#icon");
+
+  console.log(response.data);
 
   cityElement.innerHTML = response.data.city; // Update h1 city name to API result
   descriptionElement.innerHTML = response.data.condition.description; // Update description to API result
@@ -14,6 +17,7 @@ function refreshWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed} km/h`; // Update description to API result
   timeElement.innerHTML = formatDate(date); // Update HTML with current city with the current time calling formatDate function
   temperatureElement.innerHTML = Math.round(temperature); // Update HTML with current city with the current temperature
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 }
 
 function formatDate(date) {
