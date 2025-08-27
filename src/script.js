@@ -18,6 +18,10 @@ function refreshWeather(response) {
   timeElement.innerHTML = formatDate(date); // Update HTML with current city with the current time calling formatDate function
   temperatureElement.innerHTML = Math.round(temperature); // Update HTML with current city with the current temperature
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
+
+  getForecast(response.data.city);
+
 }
 
 function formatDate(date) {
@@ -54,7 +58,14 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value); // Call the function to search for the city
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "f093ocaff400a6043tff45112437b840"
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
@@ -83,4 +94,3 @@ let searchFormElement = document.querySelector("#search-form"); // Target form e
 searchFormElement.addEventListener("submit", handleSearchSubmit); // Add event listener to the form when submit is clicked
 
 searchCity("Paris"); // Initial call to load weather data for Paris
-displayForecast();
