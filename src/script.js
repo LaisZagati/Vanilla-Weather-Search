@@ -19,9 +19,7 @@ function refreshWeather(response) {
   temperatureElement.innerHTML = Math.round(temperature); // Update HTML with current city with the current temperature
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 
-
   getForecast(response.data.city);
-
 }
 
 function formatDate(date) {
@@ -59,31 +57,42 @@ function handleSearchSubmit(event) {
 }
 
 function getForecast(city) {
-  let apiKey = "f093ocaff400a6043tff45112437b840"
+  let apiKey = "f093ocaff400a6043tff45112437b840";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function displayForecast(response) {
   console.log(response.data);
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>15º</strong>
-          </div>
-          <div class="weather-forecast-temperature">9º</div>
+            <strong>${Math.round(day.temperature.maximum)}°</strong>
+          </div
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}°</div>
         </div>
       </div>
     `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
